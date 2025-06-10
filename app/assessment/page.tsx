@@ -116,33 +116,19 @@ export default function AssessmentPage() {
 
   return (
     <div className="page-container">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* Interactive Animated Bubble Background */}
       <BubbleBackground />
 
-      {/* Navigation */}
-      <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-purple-400 cosmic-logo" />
-              <span className="text-xl font-bold cosmic-text-gradient">Personality Insights</span>
-            </div>
-            <div className="hidden md:flex space-x-6">
-              <Link href="/" className="text-gray-300 hover:text-purple-400 transition-colors">
-                Home
-              </Link>
-              <Link href="/assessment" className="text-purple-400 font-semibold">
-                Assessment
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="flex flex-col items-center justify-center px-4 py-20 h-full z-10 relative">
+      <main className="flex flex-col items-center justify-center px-4 py-8 h-full z-10 relative">
         <div className="w-full max-w-2xl scrollable-content">
+          {/* Logo */}
+          <Logo size="medium" showText={true} />
+          
           <div className="mb-6">
-            <Link href="/" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+            <Link href="/" className="back-link">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Link>
