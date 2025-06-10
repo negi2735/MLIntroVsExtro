@@ -338,13 +338,6 @@ export default function AssessmentPage() {
           </Card>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="glass-nav fixed bottom-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 text-center">
-          <p className="text-gray-400 text-sm">© 2024 Personality Insights. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   )
 }
