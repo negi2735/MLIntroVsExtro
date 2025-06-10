@@ -41,10 +41,13 @@ export default function ResultsPage() {
   if (loading) {
     return (
       <div className="page-container flex items-center justify-center">
+        {/* Custom Cursor */}
+        <CustomCursor />
+        
         {/* Interactive Animated Bubble Background */}
         <BubbleBackground />
         <div className="text-center z-10">
-          <Brain className="h-12 w-12 text-purple-400 mx-auto mb-4 animate-pulse cosmic-logo" />
+          <Logo size="medium" showText={false} />
           <p className="text-gray-300">Loading your results...</p>
         </div>
       </div>
@@ -54,9 +57,13 @@ export default function ResultsPage() {
   if (!result) {
     return (
       <div className="page-container flex items-center justify-center">
+        {/* Custom Cursor */}
+        <CustomCursor />
+        
         {/* Interactive Animated Bubble Background */}
         <BubbleBackground />
         <div className="text-center z-10">
+          <Logo size="medium" showText={true} />
           <p className="text-gray-300 mb-4">No results found. Please take the assessment first.</p>
           <Link href="/assessment">
             <Button className="cosmic-button">Take Assessment</Button>
