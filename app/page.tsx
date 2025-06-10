@@ -4,20 +4,34 @@ import { Brain } from "lucide-react"
 
 export default function HomePage() {
   return (
-    <div className="page-container bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+    <div className="page-container">
+      {/* Animated Bubble Background */}
+      <div className="bubble-background">
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+      </div>
+
+      {/* Minimal Navigation */}
+      <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Personality Insights</span>
+              <Brain className="h-8 w-8 text-purple-400 cosmic-logo" />
+              <span className="text-xl font-bold cosmic-text-gradient">Personality Insights</span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <div className="hidden md:flex space-x-6">
+              <Link href="/" className="text-gray-300 hover:text-purple-400 transition-colors">
                 Home
               </Link>
-              <Link href="/assessment" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link href="/assessment" className="text-gray-300 hover:text-purple-400 transition-colors">
                 Assessment
               </Link>
             </div>
@@ -26,37 +40,55 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex flex-col items-center justify-center px-4 text-center h-full">
-        {/* Geometric Design Element */}
-        <div className="relative w-32 h-32 mb-8 md:w-48 md:h-48">
-          <div className="absolute inset-0 border-2 border-gray-300 transform rotate-45"></div>
-          <div className="absolute inset-4 border-2 border-gray-400 transform -rotate-45"></div>
-          <div className="absolute inset-8 border-2 border-blue-500 transform rotate-45"></div>
-          <div className="absolute inset-12 border-2 border-blue-600 transform -rotate-45"></div>
+      <main className="flex flex-col lg:flex-row items-center justify-center px-4 text-center lg:text-left h-full max-w-7xl mx-auto z-10 relative">
+        {/* Content Section */}
+        <div className="flex-1 lg:pr-12 mb-8 lg:mb-0">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <span className="cosmic-text">Welcome to</span><br />
+            <span className="cosmic-text-gradient">Personality Insights</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            Discover the fascinating dynamics between personality types. Our scientifically validated insights help you understand yourself and others.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <Link href="/assessment">
+              <Button
+                size="lg"
+                className="cosmic-button px-8 py-4 text-lg font-semibold rounded-lg w-full sm:w-auto"
+              >
+                Take Assessment
+              </Button>
+            </Link>
+            <Button
+              variant="outline"
+              size="lg"
+              className="cosmic-button-secondary px-8 py-4 text-lg font-semibold rounded-lg w-full sm:w-auto"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-          Welcome to <span className="text-blue-600">Personality Insights</span>
-        </h1>
-
-        <p className="text-lg text-gray-600 max-w-lg mx-auto mb-8">
-          Discover your personality traits through our scientifically validated assessment.
-        </p>
-
-        <Link href="/assessment">
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
-          >
-            Take the Assessment
-          </Button>
-        </Link>
+        {/* Hero Image Section */}
+        <div className="flex-1 lg:pl-12">
+          <div className="relative max-w-lg mx-auto">
+            <img
+              src="https://images.unsplash.com/photo-1618367588421-400296bac364"
+              alt="Personality Insights"
+              className="hero-image w-full h-auto"
+            />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full opacity-15 animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
+        </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0">
-        <div className="max-w-7xl mx-auto px-4 py-4 text-center">
-          <p className="text-gray-600 text-sm">© 2024 Personality Insights. All rights reserved.</p>
+      {/* Minimal Footer */}
+      <footer className="fixed bottom-0 left-0 right-0 z-50 glass-nav">
+        <div className="max-w-7xl mx-auto px-4 py-3 text-center">
+          <p className="text-gray-400 text-sm">© 2024 Personality Insights. All rights reserved.</p>
         </div>
       </footer>
     </div>

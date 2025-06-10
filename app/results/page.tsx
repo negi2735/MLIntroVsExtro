@@ -37,10 +37,23 @@ export default function ResultsPage() {
 
   if (loading) {
     return (
-      <div className="page-container bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
-        <div className="text-center">
-          <Brain className="h-12 w-12 text-blue-600 mx-auto mb-4 animate-pulse" />
-          <p className="text-gray-600">Loading your results...</p>
+      <div className="page-container flex items-center justify-center">
+        {/* Animated Bubble Background */}
+        <div className="bubble-background">
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+        </div>
+        <div className="text-center z-10">
+          <Brain className="h-12 w-12 text-purple-400 mx-auto mb-4 animate-pulse cosmic-logo" />
+          <p className="text-gray-300">Loading your results...</p>
         </div>
       </div>
     )
@@ -48,11 +61,24 @@ export default function ResultsPage() {
 
   if (!result) {
     return (
-      <div className="page-container bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">No results found. Please take the assessment first.</p>
+      <div className="page-container flex items-center justify-center">
+        {/* Animated Bubble Background */}
+        <div className="bubble-background">
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+        </div>
+        <div className="text-center z-10">
+          <p className="text-gray-300 mb-4">No results found. Please take the assessment first.</p>
           <Link href="/assessment">
-            <Button>Take Assessment</Button>
+            <Button className="cosmic-button">Take Assessment</Button>
           </Link>
         </div>
       </div>
@@ -98,20 +124,34 @@ export default function ResultsPage() {
   const insights = getInsights()
 
   return (
-    <div className="page-container bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="page-container">
+      {/* Animated Bubble Background */}
+      <div className="bubble-background">
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+      <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Personality Insights</span>
+              <Brain className="h-8 w-8 text-purple-400 cosmic-logo" />
+              <span className="text-xl font-bold cosmic-text-gradient">Personality Insights</span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <div className="hidden md:flex space-x-6">
+              <Link href="/" className="text-gray-300 hover:text-purple-400 transition-colors">
                 Home
               </Link>
-              <Link href="/assessment" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link href="/assessment" className="text-gray-300 hover:text-purple-400 transition-colors">
                 Assessment
               </Link>
             </div>
@@ -119,73 +159,77 @@ export default function ResultsPage() {
         </div>
       </nav>
 
-      <main className="flex flex-col items-center justify-center px-4 py-20 h-full">
-        <div className="w-full max-w-2xl scrollable-content">
+      <main className="flex flex-col items-center justify-center px-4 py-20 h-full z-10 relative">
+        <div className="w-full max-w-4xl scrollable-content">
           <div className="mb-6">
             <Link
               href="/assessment"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors"
+              className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Assessment
             </Link>
           </div>
 
-          <Card className="shadow-xl border-0 mb-6">
+          {/* Main Result Card */}
+          <Card className="dark-card shadow-xl border-0 mb-8">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold text-gray-900">Your Personality Analysis</CardTitle>
-              <CardDescription className="text-lg text-gray-600">{insights.title}</CardDescription>
+              <CardTitle className="text-3xl font-bold cosmic-text-gradient">Your Personality Analysis</CardTitle>
+              <CardDescription className="text-lg text-gray-300">{insights.title}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center mb-6">
                 <div
                   className={`inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold ${
-                    isExtrovert ? "bg-orange-100 text-orange-800" : "bg-blue-100 text-blue-800"
+                    isExtrovert 
+                      ? "bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-300 border border-orange-500/30" 
+                      : "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-500/30"
                   }`}
                 >
                   <Users className="h-5 w-5 mr-2" />
                   {personalityType} ({confidencePercentage}% confidence)
                 </div>
               </div>
-              <p className="text-gray-700 text-center leading-relaxed">{insights.description}</p>
+              <p className="text-gray-300 text-center leading-relaxed text-lg">{insights.description}</p>
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {/* Traits */}
-            <Card className="shadow-lg border-0">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl font-bold text-gray-900 flex items-center">
-                  <Lightbulb className="h-5 w-5 mr-2 text-blue-600" />
+          {/* Results Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            {/* Traits Card */}
+            <Card className="dark-card shadow-xl border-0">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-bold cosmic-text flex items-center">
+                  <Lightbulb className="h-5 w-5 mr-2 text-purple-400" />
                   Key Traits
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {insights.traits.map((trait, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gray-700 text-sm">{trait}</p>
+                    <li key={index} className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-gray-300">{trait}</p>
                     </li>
                   ))}
                 </ul>
               </CardContent>
             </Card>
 
-            {/* Suggestions */}
-            <Card className="shadow-lg border-0">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl font-bold text-gray-900 flex items-center">
-                  <BookOpen className="h-5 w-5 mr-2 text-blue-600" />
+            {/* Suggestions Card */}
+            <Card className="dark-card shadow-xl border-0">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-bold cosmic-text flex items-center">
+                  <BookOpen className="h-5 w-5 mr-2 text-purple-400" />
                   Suggestions
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {insights.suggestions.map((suggestion, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gray-700 text-sm">{suggestion}</p>
+                    <li key={index} className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-gray-300">{suggestion}</p>
                     </li>
                   ))}
                 </ul>
@@ -193,24 +237,33 @@ export default function ResultsPage() {
             </Card>
           </div>
 
+          {/* Decorative Image */}
+          <div className="flex justify-center mb-8">
+            <img
+              src="https://images.unsplash.com/photo-1615866369373-8d232ea5a028"
+              alt="Personality Visualization"
+              className="hero-image w-full max-w-md h-48 object-cover"
+            />
+          </div>
+
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/assessment" className="flex-1">
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="cosmic-button-secondary w-full py-3 text-base">
                 Retake Assessment
               </Button>
             </Link>
             <Link href="/" className="flex-1">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">Back to Home</Button>
+              <Button className="cosmic-button w-full py-3 text-base">Back to Home</Button>
             </Link>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0">
-        <div className="max-w-7xl mx-auto px-4 py-4 text-center">
-          <p className="text-gray-600 text-sm">© 2024 Personality Insights. All rights reserved.</p>
+      <footer className="glass-nav fixed bottom-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-3 text-center">
+          <p className="text-gray-400 text-sm">© 2024 Personality Insights. All rights reserved.</p>
         </div>
       </footer>
     </div>
