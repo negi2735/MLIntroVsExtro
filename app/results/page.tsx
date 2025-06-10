@@ -104,19 +104,8 @@ export default function ResultsPage() {
 
   return (
     <div className="page-container">
-      {/* Animated Bubble Background */}
-      <div className="bubble-background">
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-      </div>
+      {/* Interactive Animated Bubble Background */}
+      <BubbleBackground />
 
       {/* Navigation */}
       <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
