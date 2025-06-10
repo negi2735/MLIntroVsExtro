@@ -165,19 +165,21 @@ export default function ResultsPage() {
           {/* Results Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Traits Card */}
-            <Card className="dark-card shadow-xl border-0">
+            <Card className="dark-card shadow-xl border-0 hover:border-purple-500/30 transition-all duration-300 backdrop-blur-xl">
               <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold cosmic-text flex items-center">
-                  <Lightbulb className="h-5 w-5 mr-2 text-purple-400" />
+                <CardTitle className="text-2xl font-bold cosmic-text flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-3">
+                    💡
+                  </div>
                   Key Traits
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {insights.traits.map((trait, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gray-300">{trait}</p>
+                    <li key={index} className="flex items-start space-x-4 p-3 rounded-lg hover:bg-purple-500/5 transition-colors duration-200">
+                      <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
+                      <p className="text-gray-300 text-lg">{trait}</p>
                     </li>
                   ))}
                 </ul>
@@ -185,19 +187,21 @@ export default function ResultsPage() {
             </Card>
 
             {/* Suggestions Card */}
-            <Card className="dark-card shadow-xl border-0">
+            <Card className="dark-card shadow-xl border-0 hover:border-purple-500/30 transition-all duration-300 backdrop-blur-xl">
               <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold cosmic-text flex items-center">
-                  <BookOpen className="h-5 w-5 mr-2 text-purple-400" />
+                <CardTitle className="text-2xl font-bold cosmic-text flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center mr-3">
+                    🚀
+                  </div>
                   Suggestions
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {insights.suggestions.map((suggestion, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gray-300">{suggestion}</p>
+                    <li key={index} className="flex items-start space-x-4 p-3 rounded-lg hover:bg-green-500/5 transition-colors duration-200">
+                      <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-teal-400 rounded-full mt-2 flex-shrink-0 animate-pulse" style={{animationDelay: `${index * 0.5}s`}}></div>
+                      <p className="text-gray-300 text-lg">{suggestion}</p>
                     </li>
                   ))}
                 </ul>
