@@ -20,7 +20,7 @@ export default function HomePage() {
           {/* Logo */}
           <Logo size="large" showText={true} />
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl cosmic-text max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
             Discover the fascinating dynamics between personality types. Our scientifically validated insights help you understand yourself and others.
           </p>
 
