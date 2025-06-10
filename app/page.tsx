@@ -47,8 +47,8 @@ export default function HomePage() {
         <div className="flex-1 lg:pl-12">
           <div className="relative max-w-lg mx-auto">
             <img
-              src="https://images.unsplash.com/photo-1618367588421-400296bac364"
-              alt="Personality Insights"
+              src="https://images.unsplash.com/photo-1551086002-6eebfd453843"
+              alt="Professional Psychology and Personality Insights"
               className="hero-image w-full h-auto"
             />
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse"></div>
