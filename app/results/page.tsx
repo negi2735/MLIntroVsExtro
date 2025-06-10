@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Brain, ArrowLeft, Users, BookOpen, Lightbulb } from "lucide-react"
+import BubbleBackground from "@/components/BubbleBackground"
 
 interface PersonalityResult {
   success?: boolean
