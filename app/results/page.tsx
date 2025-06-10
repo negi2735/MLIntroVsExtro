@@ -52,19 +52,8 @@ export default function ResultsPage() {
   if (!result) {
     return (
       <div className="page-container flex items-center justify-center">
-        {/* Animated Bubble Background */}
-        <div className="bubble-background">
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-        </div>
+        {/* Interactive Animated Bubble Background */}
+        <BubbleBackground />
         <div className="text-center z-10">
           <p className="text-gray-300 mb-4">No results found. Please take the assessment first.</p>
           <Link href="/assessment">
