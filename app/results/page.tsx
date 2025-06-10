@@ -135,25 +135,30 @@ export default function ResultsPage() {
           </div>
 
           {/* Main Result Card */}
-          <Card className="dark-card shadow-xl border-0 mb-8">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold cosmic-text-gradient">Your Personality Analysis</CardTitle>
-              <CardDescription className="text-lg text-gray-300">{insights.title}</CardDescription>
+          <Card className="dark-card shadow-xl border-0 mb-8 backdrop-blur-xl">
+            <CardHeader className="text-center pb-8">
+              <CardTitle className="text-4xl font-bold cosmic-text-gradient mb-2">
+                🎯 Your Personality Analysis
+              </CardTitle>
+              <CardDescription className="text-xl cosmic-text">{insights.title}</CardDescription>
+              <div className="mt-4 flex justify-center">
+                <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded"></div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-center mb-6">
                 <div
-                  className={`inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold ${
+                  className={`inline-flex items-center px-8 py-4 rounded-2xl text-xl font-semibold transition-all duration-300 hover:transform hover:scale-105 ${
                     isExtrovert 
-                      ? "bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-300 border border-orange-500/30" 
-                      : "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-500/30"
+                      ? "bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-300 border border-orange-500/30 shadow-lg shadow-orange-500/10" 
+                      : "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-500/30 shadow-lg shadow-blue-500/10"
                   }`}
                 >
-                  <Users className="h-5 w-5 mr-2" />
+                  {isExtrovert ? "🎉" : "🧘"} <Users className="h-6 w-6 mx-2" />
                   {personalityType} ({confidencePercentage}% confidence)
                 </div>
               </div>
-              <p className="text-gray-300 text-center leading-relaxed text-lg">{insights.description}</p>
+              <p className="text-gray-300 text-center leading-relaxed text-xl cosmic-text">{insights.description}</p>
             </CardContent>
           </Card>
 
