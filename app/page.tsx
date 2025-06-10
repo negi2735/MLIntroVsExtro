@@ -1,23 +1,13 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Brain } from "lucide-react"
+import BubbleBackground from "@/components/BubbleBackground"
 
 export default function HomePage() {
   return (
     <div className="page-container">
-      {/* Animated Bubble Background */}
-      <div className="bubble-background">
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-      </div>
+      {/* Interactive Animated Bubble Background */}
+      <BubbleBackground />
 
       {/* Minimal Navigation */}
       <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
