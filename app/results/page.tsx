@@ -5,8 +5,10 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Brain, ArrowLeft, Users, BookOpen, Lightbulb } from "lucide-react"
+import { ArrowLeft, Users, BookOpen, Lightbulb } from "lucide-react"
 import BubbleBackground from "@/components/BubbleBackground"
+import CustomCursor from "@/components/CustomCursor"
+import Logo from "@/components/Logo"
 
 interface PersonalityResult {
   success?: boolean
