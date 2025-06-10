@@ -94,8 +94,15 @@ export default function AssessmentPage() {
         localStorage.setItem("personalityResult", JSON.stringify(result))
         router.push("/results")
       } else {
-        const errorData = await response.json()
-        alert(`Error: ${errorData.error || "Failed to submit assessment"}`)
+        let errorMessage = "Failed to submit assessment"
+        try {
+          const errorData = await response.json()
+          errorMessage = errorData.error || errorMessage
+        } catch {
+          // If response is not JSON, use status text
+          errorMessage = response.statusText || errorMessage
+        }
+        alert(`Error: ${errorMessage}`)
       }
     } catch (error) {
       console.error("Error:", error)
