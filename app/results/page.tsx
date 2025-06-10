@@ -222,14 +222,16 @@ export default function ResultsPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-6">
             <Link href="/assessment" className="flex-1">
-              <Button variant="outline" className="cosmic-button-secondary w-full py-3 text-base">
-                Retake Assessment
+              <Button variant="outline" className="cosmic-button-secondary w-full py-4 text-lg font-semibold rounded-xl hover:transform hover:scale-[1.02] transition-all duration-300">
+                🔄 Retake Assessment
               </Button>
             </Link>
             <Link href="/" className="flex-1">
-              <Button className="cosmic-button w-full py-3 text-base">Back to Home</Button>
+              <Button className="cosmic-button w-full py-4 text-lg font-semibold rounded-xl hover:transform hover:scale-[1.02] transition-all duration-300">
+                🏠 Back to Home
+              </Button>
             </Link>
           </div>
         </div>
