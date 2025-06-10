@@ -39,19 +39,8 @@ export default function ResultsPage() {
   if (loading) {
     return (
       <div className="page-container flex items-center justify-center">
-        {/* Animated Bubble Background */}
-        <div className="bubble-background">
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-        </div>
+        {/* Interactive Animated Bubble Background */}
+        <BubbleBackground />
         <div className="text-center z-10">
           <Brain className="h-12 w-12 text-purple-400 mx-auto mb-4 animate-pulse cosmic-logo" />
           <p className="text-gray-300">Loading your results...</p>
