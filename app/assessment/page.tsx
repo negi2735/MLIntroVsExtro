@@ -10,9 +10,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Brain, ArrowLeft, Loader2 } from "lucide-react"
+import { ArrowLeft, Loader2 } from "lucide-react"
 import { z } from "zod"
 import BubbleBackground from "@/components/BubbleBackground"
+import CustomCursor from "@/components/CustomCursor"
+import Logo from "@/components/Logo"
 
 // Define validation schema using Zod
 const PersonalitySchema = z.object({
