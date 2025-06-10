@@ -82,27 +82,27 @@ export default function BubbleBackground() {
         }
       }, 600)
 
-      // Make nearby bubbles "bounce" on click
-      bubbles.forEach((bubble) => {
-        const rect = bubble.getBoundingClientRect()
-        const bubbleCenterX = rect.left + rect.width / 2
-        const bubbleCenterY = rect.top + rect.height / 2
-        
-        const distance = Math.sqrt(
-          Math.pow(e.clientX - bubbleCenterX, 2) + Math.pow(e.clientY - bubbleCenterY, 2)
-        )
+      // Remove the bubble bounce effect - commented out
+      // bubbles.forEach((bubble) => {
+      //   const rect = bubble.getBoundingClientRect()
+      //   const bubbleCenterX = rect.left + rect.width / 2
+      //   const bubbleCenterY = rect.top + rect.height / 2
+      //   
+      //   const distance = Math.sqrt(
+      //     Math.pow(e.clientX - bubbleCenterX, 2) + Math.pow(e.clientY - bubbleCenterY, 2)
+      //   )
 
-        if (distance < 300) {
-          const element = bubble as HTMLElement
-          element.style.animation = 'none'
-          element.style.transform = 'scale(1.3)'
-          
-          setTimeout(() => {
-            element.style.transform = ''
-            element.style.animation = ''
-          }, 300)
-        }
-      })
+      //   if (distance < 300) {
+      //     const element = bubble as HTMLElement
+      //     element.style.animation = 'none'
+      //     element.style.transform = 'scale(1.3)'
+      //     
+      //     setTimeout(() => {
+      //       element.style.transform = ''
+      //       element.style.animation = ''
+      //     }, 300)
+      //   }
+      // })
     }
 
     // Add event listeners
