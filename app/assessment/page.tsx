@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, Loader2 } from "lucide-react"
+import { ArrowLeft, Loader2, Users, Home, Mic, BookOpen, MessageCircle, Battery, Eye } from "lucide-react"
 import { z } from "zod"
 import BubbleBackground from "@/components/BubbleBackground"
 import CustomCursor from "@/components/CustomCursor"
@@ -123,213 +123,320 @@ export default function AssessmentPage() {
       <BubbleBackground />
 
       <main className="flex flex-col items-center justify-center px-4 py-8 h-full z-10 relative">
-        <div className="w-full max-w-2xl scrollable-content">
+        <div className="w-full max-w-3xl scrollable-content">
           {/* Logo */}
           <Logo size="medium" showText={true} />
           
           <div className="mb-6">
-            <Link href="/" className="back-link">
+            <Link href="/" className="back-link hover:transform hover:scale-105 transition-all duration-200">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Link>
           </div>
 
-          <Card className="dark-card shadow-xl border-0">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold cosmic-text-gradient">Personality Assessment</CardTitle>
-              <CardDescription className="text-gray-300">
-                Answer these questions to discover your personality traits
+          <Card className="dark-card shadow-xl border-0 backdrop-blur-xl">
+            <CardHeader className="text-center pb-8">
+              <CardTitle className="text-3xl font-bold cosmic-text-gradient mb-2">
+                🧠 Personality Assessment
+              </CardTitle>
+              <CardDescription className="text-lg text-gray-300">
+                Discover your unique personality traits through our scientifically-backed questionnaire
               </CardDescription>
+              <div className="mt-4 flex justify-center">
+                <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded"></div>
+              </div>
             </CardHeader>
 
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <CardContent className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                
                 {/* Going Outside */}
-                <div className="space-y-3">
-                  <Label htmlFor="going-outside" className="text-base font-semibold cosmic-text">
-                    How much do you enjoy going outside and socializing?
-                  </Label>
-                  <Select
-                    onValueChange={(value) => setFormData({ ...formData, Going_outside: Number.parseInt(value) })}
-                    defaultValue={formData.Going_outside.toString()}
-                  >
-                    <SelectTrigger className="cosmic-input">
-                      <SelectValue placeholder="Select your preference" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-purple-500/20">
-                      <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">Strongly prefer staying indoors</SelectItem>
-                      <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">Prefer staying indoors</SelectItem>
-                      <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">Neutral</SelectItem>
-                      <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">Enjoy going outside</SelectItem>
-                      <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">Love being outdoors and socializing</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {validationErrors.Going_outside && (
-                    <p className="text-sm text-red-400">{validationErrors.Going_outside}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center text-2xl">
+                          🌞
+                        </div>
+                        <div className="flex-1">
+                          <Label htmlFor="going-outside" className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <Users className="h-5 w-5 text-green-400" />
+                            Social Energy & Outdoor Activities
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">How much do you enjoy going outside and socializing with others?</p>
+                        </div>
+                      </div>
+                      <Select
+                        onValueChange={(value) => setFormData({ ...formData, Going_outside: Number.parseInt(value) })}
+                        defaultValue={formData.Going_outside.toString()}
+                      >
+                        <SelectTrigger className="cosmic-input hover:border-green-400/50 transition-colors">
+                          <SelectValue placeholder="Select your preference" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border-purple-500/20">
+                          <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">🏠 Strongly prefer staying indoors</SelectItem>
+                          <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">🏡 Prefer staying indoors</SelectItem>
+                          <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">⚖️ Neutral - balanced approach</SelectItem>
+                          <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">🌳 Enjoy going outside</SelectItem>
+                          <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">🎉 Love being outdoors and socializing</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {validationErrors.Going_outside && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Going_outside}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Time Spent Alone */}
-                <div className="space-y-3">
-                  <Label htmlFor="time-alone" className="text-base font-semibold cosmic-text">
-                    Where do you gain energy from?
-                  </Label>
-                  <Select
-                    onValueChange={(value) => setFormData({ ...formData, Time_spent_Alone: Number.parseInt(value) })}
-                    defaultValue={formData.Time_spent_Alone.toString()}
-                  >
-                    <SelectTrigger className="cosmic-input">
-                      <SelectValue placeholder="Select your energy source" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-purple-500/20">
-                      <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">Gain energy from being with others</SelectItem>
-                      <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">Prefer some social interaction</SelectItem>
-                      <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">Balanced between alone time and social time</SelectItem>
-                      <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">Prefer spending time alone</SelectItem>
-                      <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">Strongly prefer solitude to recharge</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {validationErrors.Time_spent_Alone && (
-                    <p className="text-sm text-red-400">{validationErrors.Time_spent_Alone}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-2xl">
+                          ⚡
+                        </div>
+                        <div className="flex-1">
+                          <Label htmlFor="time-alone" className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <Battery className="h-5 w-5 text-blue-400" />
+                            Energy Source & Recharge Method
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">Where do you get your energy from - people or solitude?</p>
+                        </div>
+                      </div>
+                      <Select
+                        onValueChange={(value) => setFormData({ ...formData, Time_spent_Alone: Number.parseInt(value) })}
+                        defaultValue={formData.Time_spent_Alone.toString()}
+                      >
+                        <SelectTrigger className="cosmic-input hover:border-blue-400/50 transition-colors">
+                          <SelectValue placeholder="Select your energy source" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border-purple-500/20">
+                          <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">👥 Gain energy from being with others</SelectItem>
+                          <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">🤝 Prefer some social interaction</SelectItem>
+                          <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">⚖️ Balanced between alone time and social time</SelectItem>
+                          <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">🧘 Prefer spending time alone</SelectItem>
+                          <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">🔋 Strongly prefer solitude to recharge</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {validationErrors.Time_spent_Alone && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Time_spent_Alone}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Stage Fear */}
-                <div className="space-y-3">
-                  <Label className="text-base font-semibold cosmic-text">
-                    Do you experience stage fear or anxiety when speaking publicly?
-                  </Label>
-                  <RadioGroup
-                    onValueChange={(value) => setFormData({ ...formData, Stage_fear: Number.parseInt(value) })}
-                    defaultValue={formData.Stage_fear.toString()}
-                    className="flex space-x-6"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="0" id="stage-fear-no" className="border-purple-400 text-purple-400" />
-                      <Label htmlFor="stage-fear-no" className="text-gray-300">No stage fear</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="1" id="stage-fear-yes" className="border-purple-400 text-purple-400" />
-                      <Label htmlFor="stage-fear-yes" className="text-gray-300">Experience stage fear</Label>
-                    </div>
-                  </RadioGroup>
-                  {validationErrors.Stage_fear && <p className="text-sm text-red-400">{validationErrors.Stage_fear}</p>}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center text-2xl">
+                          🎭
+                        </div>
+                        <div className="flex-1">
+                          <Label className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <Eye className="h-5 w-5 text-red-400" />
+                            Public Speaking Comfort
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">How comfortable are you with public speaking and being the center of attention?</p>
+                        </div>
+                      </div>
+                      <RadioGroup
+                        onValueChange={(value) => setFormData({ ...formData, Stage_fear: Number.parseInt(value) })}
+                        defaultValue={formData.Stage_fear.toString()}
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                      >
+                        <div className="flex items-center space-x-3 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-200">
+                          <RadioGroupItem value="0" id="stage-fear-no" className="border-purple-400 text-purple-400" />
+                          <Label htmlFor="stage-fear-no" className="text-gray-300 cursor-pointer flex items-center gap-2">
+                            😎 <span>Confident public speaker</span>
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-3 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-200">
+                          <RadioGroupItem value="1" id="stage-fear-yes" className="border-purple-400 text-purple-400" />
+                          <Label htmlFor="stage-fear-yes" className="text-gray-300 cursor-pointer flex items-center gap-2">
+                            😰 <span>Experience stage fear</span>
+                          </Label>
+                        </div>
+                      </RadioGroup>
+                      {validationErrors.Stage_fear && <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Stage_fear}</p>}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Drained After Socializing */}
-                <div className="space-y-3">
-                  <Label className="text-base font-semibold cosmic-text">
-                    Do you feel drained after socializing?
-                  </Label>
-                  <RadioGroup
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, Drained_after_socializing: Number.parseInt(value) })
-                    }
-                    defaultValue={formData.Drained_after_socializing.toString()}
-                    className="flex space-x-6"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="0" id="not-drained" className="border-purple-400 text-purple-400" />
-                      <Label htmlFor="not-drained" className="text-gray-300">Feel energized after socializing</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="1" id="drained" className="border-purple-400 text-purple-400" />
-                      <Label htmlFor="drained" className="text-gray-300">Feel drained after socializing</Label>
-                    </div>
-                  </RadioGroup>
-                  {validationErrors.Drained_after_socializing && (
-                    <p className="text-sm text-red-400">{validationErrors.Drained_after_socializing}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-2xl">
+                          💭
+                        </div>
+                        <div className="flex-1">
+                          <Label className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <Users className="h-5 w-5 text-purple-400" />
+                            Post-Social Energy Levels
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">How do you typically feel after spending time in social situations?</p>
+                        </div>
+                      </div>
+                      <RadioGroup
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, Drained_after_socializing: Number.parseInt(value) })
+                        }
+                        defaultValue={formData.Drained_after_socializing.toString()}
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                      >
+                        <div className="flex items-center space-x-3 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-200">
+                          <RadioGroupItem value="0" id="not-drained" className="border-purple-400 text-purple-400" />
+                          <Label htmlFor="not-drained" className="text-gray-300 cursor-pointer flex items-center gap-2">
+                            ⚡ <span>Feel energized after socializing</span>
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-3 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-200">
+                          <RadioGroupItem value="1" id="drained" className="border-purple-400 text-purple-400" />
+                          <Label htmlFor="drained" className="text-gray-300 cursor-pointer flex items-center gap-2">
+                            😴 <span>Feel drained after socializing</span>
+                          </Label>
+                        </div>
+                      </RadioGroup>
+                      {validationErrors.Drained_after_socializing && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Drained_after_socializing}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Reading Books */}
-                <div className="space-y-3">
-                  <Label htmlFor="reading" className="text-base font-semibold cosmic-text">
-                    How much do you enjoy reading books?
-                  </Label>
-                  <Select
-                    onValueChange={(value) => setFormData({ ...formData, Reading_books: Number.parseInt(value) })}
-                    defaultValue={formData.Reading_books.toString()}
-                  >
-                    <SelectTrigger className="cosmic-input">
-                      <SelectValue placeholder="Select your reading preference" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-purple-500/20">
-                      <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">Dislike reading</SelectItem>
-                      <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">Rarely read</SelectItem>
-                      <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">Occasionally read</SelectItem>
-                      <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">Enjoy reading</SelectItem>
-                      <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">Love reading books</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {validationErrors.Reading_books && (
-                    <p className="text-sm text-red-400">{validationErrors.Reading_books}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center text-2xl">
+                          📚
+                        </div>
+                        <div className="flex-1">
+                          <Label htmlFor="reading" className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <BookOpen className="h-5 w-5 text-amber-400" />
+                            Reading & Learning Preferences  
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">How much do you enjoy reading books and learning through text?</p>
+                        </div>
+                      </div>
+                      <Select
+                        onValueChange={(value) => setFormData({ ...formData, Reading_books: Number.parseInt(value) })}
+                        defaultValue={formData.Reading_books.toString()}
+                      >
+                        <SelectTrigger className="cosmic-input hover:border-amber-400/50 transition-colors">
+                          <SelectValue placeholder="Select your reading preference" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border-purple-500/20">
+                          <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">😑 Dislike reading</SelectItem>
+                          <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">📱 Rarely read books</SelectItem>
+                          <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">📖 Occasionally read</SelectItem>
+                          <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">📚 Enjoy reading regularly</SelectItem>
+                          <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">📖💕 Love reading books</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {validationErrors.Reading_books && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Reading_books}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Talkativeness */}
-                <div className="space-y-3">
-                  <Label htmlFor="talkativeness" className="text-base font-semibold cosmic-text">
-                    How talkative are you?
-                  </Label>
-                  <Select
-                    onValueChange={(value) => setFormData({ ...formData, Talkativeness: Number.parseInt(value) })}
-                    defaultValue={formData.Talkativeness.toString()}
-                  >
-                    <SelectTrigger className="cosmic-input">
-                      <SelectValue placeholder="Select your talkativeness level" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-purple-500/20">
-                      <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">Very quiet/reserved</SelectItem>
-                      <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">Somewhat quiet</SelectItem>
-                      <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">Moderately talkative</SelectItem>
-                      <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">Quite talkative</SelectItem>
-                      <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">Very talkative/outgoing</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {validationErrors.Talkativeness && (
-                    <p className="text-sm text-red-400">{validationErrors.Talkativeness}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-2xl">
+                          💬
+                        </div>
+                        <div className="flex-1">
+                          <Label htmlFor="talkativeness" className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <MessageCircle className="h-5 w-5 text-cyan-400" />
+                            Communication Style & Talkativeness
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">How talkative and expressive are you in conversations?</p>
+                        </div>
+                      </div>
+                      <Select
+                        onValueChange={(value) => setFormData({ ...formData, Talkativeness: Number.parseInt(value) })}
+                        defaultValue={formData.Talkativeness.toString()}
+                      >
+                        <SelectTrigger className="cosmic-input hover:border-cyan-400/50 transition-colors">
+                          <SelectValue placeholder="Select your talkativeness level" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border-purple-500/20">
+                          <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">🤐 Very quiet/reserved</SelectItem>
+                          <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">😐 Somewhat quiet</SelectItem>
+                          <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">🙂 Moderately talkative</SelectItem>
+                          <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">😊 Quite talkative</SelectItem>
+                          <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">🗣️ Very talkative/outgoing</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {validationErrors.Talkativeness && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Talkativeness}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Energy Level */}
-                <div className="space-y-3">
-                  <Label htmlFor="energy" className="text-base font-semibold cosmic-text">
-                    What is your general energy level?
-                  </Label>
-                  <Select
-                    onValueChange={(value) => setFormData({ ...formData, Energy_level: Number.parseInt(value) })}
-                    defaultValue={formData.Energy_level.toString()}
-                  >
-                    <SelectTrigger className="cosmic-input">
-                      <SelectValue placeholder="Select your energy level" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-purple-500/20">
-                      <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">Low energy/calm activities</SelectItem>
-                      <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">Somewhat low energy</SelectItem>
-                      <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">Moderate energy level</SelectItem>
-                      <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">High energy</SelectItem>
-                      <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">Very high energy/active</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {validationErrors.Energy_level && (
-                    <p className="text-sm text-red-400">{validationErrors.Energy_level}</p>
-                  )}
+                <div className="group">
+                  <Card className="dark-card border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center text-2xl">
+                          🔥
+                        </div>
+                        <div className="flex-1">
+                          <Label htmlFor="energy" className="text-lg font-semibold cosmic-text flex items-center gap-2">
+                            <Battery className="h-5 w-5 text-green-400" />
+                            Overall Energy & Activity Level
+                          </Label>
+                          <p className="text-sm text-gray-400 mt-1">What's your general energy level and preference for activities?</p>
+                        </div>
+                      </div>
+                      <Select
+                        onValueChange={(value) => setFormData({ ...formData, Energy_level: Number.parseInt(value) })}
+                        defaultValue={formData.Energy_level.toString()}
+                      >
+                        <SelectTrigger className="cosmic-input hover:border-green-400/50 transition-colors">
+                          <SelectValue placeholder="Select your energy level" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border-purple-500/20">
+                          <SelectItem value="1" className="text-gray-200 hover:bg-purple-500/20">🐌 Low energy/calm activities</SelectItem>
+                          <SelectItem value="2" className="text-gray-200 hover:bg-purple-500/20">🚶 Somewhat low energy</SelectItem>
+                          <SelectItem value="3" className="text-gray-200 hover:bg-purple-500/20">🚴 Moderate energy level</SelectItem>
+                          <SelectItem value="4" className="text-gray-200 hover:bg-purple-500/20">🏃 High energy</SelectItem>
+                          <SelectItem value="5" className="text-gray-200 hover:bg-purple-500/20">⚡ Very high energy/active</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {validationErrors.Energy_level && (
+                        <p className="text-sm text-red-400 mt-2 animate-pulse">{validationErrors.Energy_level}</p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-6">
                   <Button
                     type="submit"
-                    className="cosmic-button w-full py-3 text-base font-semibold rounded-lg"
+                    className="cosmic-button w-full py-4 text-lg font-semibold rounded-xl hover:transform hover:scale-[1.02] transition-all duration-300 shadow-2xl"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Analyzing...
+                        <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                        🧠 Analyzing Your Personality...
                       </>
                     ) : (
-                      "Submit Assessment"
+                      <>
+                        🚀 Submit Assessment & Discover Your Personality
+                      </>
                     )}
                   </Button>
                 </div>
