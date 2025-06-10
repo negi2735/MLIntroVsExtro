@@ -211,11 +211,14 @@ export default function ResultsPage() {
 
           {/* Decorative Image */}
           <div className="flex justify-center mb-8">
-            <img
-              src="https://images.unsplash.com/photo-1615866369373-8d232ea5a028"
-              alt="Personality Visualization"
-              className="hero-image w-full max-w-md h-48 object-cover"
-            />
+            <div className="relative max-w-md mx-auto">
+              <img
+                src="https://images.unsplash.com/photo-1748194449456-a6a59f63dcc8"
+                alt="Professional Psychology Data Visualization"
+                className="hero-image w-full h-48 object-cover rounded-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
+            </div>
           </div>
 
           {/* Action Buttons */}
